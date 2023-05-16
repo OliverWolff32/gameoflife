@@ -13,6 +13,12 @@ public class View extends JComponent{
         height = h;
     }
 
+    
+
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(width, height);
+    }
 
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
