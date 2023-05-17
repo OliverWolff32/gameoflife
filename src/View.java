@@ -7,18 +7,35 @@ public class View extends JComponent{
     private int width;
     private int height;
 
+    public void init(int w, int h) {
+       
+
+        View v = new View(w,h);
+        
+
+        JFrame f = new JFrame();
+        	
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        f.add(panel);
+        panel.setMinimumSize(new Dimension(w,h));
+        panel.add(v);
+        panel.setVisible(true);
+
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setMinimumSize(new Dimension(w, h));
+        
+        
+        f.pack();
+        f.setLocationRelativeTo(null);
+        f.setVisible(true);
+    }
+
 
     public View(int w, int h) {
         width = w;
         height = h;
-    }
+    }    
 
-    
-
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(width, height);
-    }
 
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
@@ -28,11 +45,18 @@ public class View extends JComponent{
         g2d.fill(r);
         //background
        
-        g2d.setColor(new Color(0,0,0));
-        Rectangle2D.Double square = new Rectangle2D.Double(240,240,20,20);
+        g2d.setColor(new Color(175,175,175));
+        Rectangle2D.Double square = new Rectangle2D.Double(0,500,500,50);
         
         g2d.fill(square);
     }
+
+    @Override
+    public Dimension getPreferredSize() {
+        return new Dimension(width, height);
+    }
+
+    
    
 }
 

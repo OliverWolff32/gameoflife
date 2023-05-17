@@ -3,8 +3,9 @@ public class State {
 
     Boolean[][] cells;
 
-    public State() {
-        cells = new Boolean[][]
+    public State(int row, int col) {
+        cells = new Boolean[row][col];
+        // System.out.println(String.valueOf(row) + col);
     }
 
     public void changeCell(int row, int col) {
