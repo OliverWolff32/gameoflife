@@ -1,14 +1,18 @@
 import java.awt.*;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 import java.awt.geom.*;
 import javax.swing.*;
 
-import org.w3c.dom.events.MouseEvent;
 
 
-public class View extends JComponent{
+public class View extends JComponent 
+    implements MouseListener {
     private int width;
     private int height;
+
+    private int mouseX;
+    private int mouseY;
 
     public void init(int w, int h) {
        
@@ -22,12 +26,8 @@ public class View extends JComponent{
         panel.setMinimumSize(new Dimension(w,h));
         panel.add(v);
         panel.setVisible(true);
-        panel.addMouseListener(new MouseListener() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                System.out.println("a");
-            }
-        });
+        panel.addMouseListener(this);
+        
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setMinimumSize(new Dimension(w, h));
@@ -56,13 +56,43 @@ public class View extends JComponent{
         g2d.fill(square);
     }
 
+
+    @Override
+    public void mousePressed(MouseEvent arg0) {
+        mouseX = arg0.getX();
+        mouseY = arg0.getY();
+        System.out.printf("%f %f\n", mouseX, mouseY);
+
+        
+    }
+
+    public int getMouseX() {
+        return mouseX;
+    }
+
+    public int getMouseY() {
+        return mouseY;
+    }
     @Override
     public Dimension getPreferredSize() {
         return new Dimension(width, height);
     }
 
-    
-   
+    @Override
+    public void mouseClicked(MouseEvent arg0) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent arg0) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent arg0) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent arg0) {
+    }
 }
-
-
+   
