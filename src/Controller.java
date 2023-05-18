@@ -9,7 +9,8 @@ public class Controller {
         w = row;
         h = col;
     }
-    public void run() {
 
+    public void run() {
+        view.init(w,h);
     }
 }

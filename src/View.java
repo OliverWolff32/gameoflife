@@ -61,7 +61,7 @@ public class View extends JComponent
     public void mousePressed(MouseEvent arg0) {
         mouseX = arg0.getX();
         mouseY = arg0.getY();
-        System.out.printf("%f %f\n", mouseX, mouseY);
+        System.out.printf("%d %d\n", mouseX, mouseY);
 
         
     }
