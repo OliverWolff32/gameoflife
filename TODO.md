@@ -1,6 +1,7 @@
 **PRIORITY**:
     use mousePos to flip cells
     make START, RESET, STOP buttons at bottom 
+        working on this: use jPanel child.setLocation(x, y) to set locs
     make logic methods in State class
     figure out how to make shit happen when mouse clicked
 

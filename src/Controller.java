@@ -12,7 +12,6 @@ public class Controller {
         running = true;
         state = new State(w/10,(h-50)/10); // 10px cells
         view = new View(w, h);
-
     }
     
 

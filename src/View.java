@@ -15,6 +15,8 @@ public class View  extends JComponent  implements MouseListener {
     private int mouseX;
     private int mouseY;
 
+    private JButton start;
+
     public void init(int w, int h) {
        
         View v = new View(w,h);
@@ -23,12 +25,14 @@ public class View  extends JComponent  implements MouseListener {
         JFrame f = new JFrame();
         // flowlayout removes padding around edges
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        start = new JButton("START");
         f.add(panel);
 
         panel.setMinimumSize(new Dimension(w,h));
         panel.add(v);
         panel.setVisible(true);
         panel.addMouseListener(this);
+        
         
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
