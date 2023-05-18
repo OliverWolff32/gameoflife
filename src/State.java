@@ -6,11 +6,7 @@ public class State {
     public State(int row, int col) {
         cells = new Boolean[row][col];
         // System.out.println(String.valueOf(row) + col);
-    }
-
-    
-
-
+    }  
 
     /**
      * SHOULD ONLY BE CALLED WHEN MOUSE IS IN THE CELL BOX

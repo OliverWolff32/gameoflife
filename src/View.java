@@ -10,6 +10,8 @@ public class View  extends JComponent  implements MouseListener {
     private int width;
     private int height;
 
+    public static boolean pendingClick = false;
+
     private int mouseX;
     private int mouseY;
 
@@ -61,6 +63,7 @@ public class View  extends JComponent  implements MouseListener {
     public void mousePressed(MouseEvent arg0) {
         mouseX = arg0.getX();
         mouseY = arg0.getY();
+        pendingClick = true;
         System.out.printf("%d %d\n", mouseX, mouseY);
 
         
