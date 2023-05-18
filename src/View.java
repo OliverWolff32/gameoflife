@@ -6,8 +6,7 @@ import javax.swing.*;
 
 
 
-public class View extends JComponent 
-    implements MouseListener {
+public class View  extends JComponent  implements MouseListener {
     private int width;
     private int height;
 
@@ -20,6 +19,7 @@ public class View extends JComponent
         
         
         JFrame f = new JFrame();
+        // flowlayout removes padding around edges
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         f.add(panel);
 

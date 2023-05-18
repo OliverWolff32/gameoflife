@@ -9,14 +9,27 @@ public class State {
     }
 
     
+
+
+
     /**
+     * SHOULD ONLY BE CALLED WHEN MOUSE IS IN THE CELL BOX
      * @param mx == mouse x pos in window
      * @return index of cell x
     **/
     public int getCellXOnClick(int mx) { 
+        // 10px wide cells, 500px wide box = 50 cells wide
+        return mx/10;
+    }
 
-
-        return -1;
+    /**
+     * SHOULD ONLY BE CALLED WHEN MOUSE IS IN THE CELL BOX
+     * @param my == mouse y pos in window
+     * @return index of cell y
+    **/
+    public int getCellYOnClick(int my) { 
+        // 10px tall cells, 500px tall box = 50 cells tall
+        return my/10;        
     }
 
 
