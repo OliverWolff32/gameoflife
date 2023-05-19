@@ -24,15 +24,22 @@ public class View  extends JComponent  implements MouseListener {
         
         JFrame f = new JFrame();
         // flowlayout removes padding around edges
-        JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
-        start = new JButton("START");
-        f.add(panel);
+        JPanel panelTop = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        //JPanel panelBot = new JPanel();
+        //start = new JButton("START");
+        f.add(panelTop);
+        //f.add(panelBot);
 
-        panel.setMinimumSize(new Dimension(w,h));
-        panel.add(v);
-        panel.setVisible(true);
-        panel.addMouseListener(this);
+        panelTop.setMinimumSize(new Dimension(w,h));
+        panelTop.add(v);
+        panelTop.setVisible(true);
+        panelTop.addMouseListener(this);
         
+        //panelTop.add(start);
+        //start.setMaximumSize(new Dimension(25,25));
+        //start.setBackground(new Color(75,75,75));
+        //start.setRolloverEnabled(false);
+        //start.setLocation(100,100);
         
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,8 +65,11 @@ public class View  extends JComponent  implements MouseListener {
        
         g2d.setColor(new Color(175,175,175));
         Rectangle2D.Double square = new Rectangle2D.Double(0,500,500,50);
-        
         g2d.fill(square);
+
+        g2d.setColor(new Color(0,220,0));
+        Rectangle2D.Double startButton = new Rectangle2D.Double(25, 500, 100, 50);
+        g2d.fill(startButton);
     }
 
 
