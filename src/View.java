@@ -6,7 +6,10 @@ import javax.swing.*;
 
 
 
-public class View  extends JComponent  implements MouseListener {
+public class View 
+extends JComponent 
+implements MouseListener {
+
     private int width;
     private int height;
 
@@ -15,7 +18,9 @@ public class View  extends JComponent  implements MouseListener {
     private int mouseX;
     private int mouseY;
 
-    private JButton start;
+    public Graphics2D graphics2D;
+
+    Boolean[][] cells = new Boolean[50][50];
 
     public void init(int w, int h) {
        
@@ -35,6 +40,8 @@ public class View  extends JComponent  implements MouseListener {
         panelTop.setVisible(true);
         panelTop.addMouseListener(this);
         
+        graphics2D = (Graphics2D)panelTop.getGraphics();
+
         //panelTop.add(start);
         //start.setMaximumSize(new Dimension(25,25));
         //start.setBackground(new Color(75,75,75));
@@ -56,6 +63,10 @@ public class View  extends JComponent  implements MouseListener {
 
 
     protected void paintComponent(Graphics g) {
+        
+    }
+
+    public void paint(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(new Color(130,130,130)); // paintbrush - needs to be changed before drawing anything a different color.
 
@@ -79,10 +90,78 @@ public class View  extends JComponent  implements MouseListener {
         mouseY = arg0.getY();
         pendingClick = true;
         System.out.printf("%d %d\n", mouseX, mouseY);
+        paintSquare(getCellXOnClick(mouseX), getCellYOnClick(mouseY), graphics2D);
+    }
 
+
+
+
+    /**
+     * 
+     * @param cX cell x coord
+     * @param cY cell y coord
+     */
+    public void paintSquare(int cX, int cY, Graphics2D g) {
+        //PAINT HERE
+        Graphics2D g2d = g;
+        g2d.setColor(new Color(255,255,255));
+        Rectangle2D.Double r = new Rectangle2D.Double(0, 0, 10, 10);
+        g2d.fill(r);
         
     }
 
+
+
+
+
+
+    
+
+    
+
+    /**
+     * SHOULD ONLY BE CALLED WHEN MOUSE IS IN THE CELL BOX
+     * @param mx == mouse x pos in window
+     * @return index of cell x
+    **/
+    public int getCellXOnClick(int mx) { 
+        // 10px wide cells, 500px wide box = 50 cells wide
+        return mx/10;
+    }
+
+    /**
+     * SHOULD ONLY BE CALLED WHEN MOUSE IS IN THE CELL BOX
+     * @param my == mouse y pos in window
+     * @return index of cell y
+    **/
+    public int getCellYOnClick(int my) { 
+        // 10px tall cells, 500px tall box = 50 cells tall
+        return my/10;        
+    }
+
+
+
+    public void changeCell(int row, int col) {
+        cells[row][col] = !cells[row][col];
+    }
+
+    public boolean getCell(int row, int col) {
+        return cells[row][col];
+    }
+
+
+
+
+
+
+
+
+
+
+    /**
+     * below are default getters/methods for mouselisteners
+     * @return
+     */
     public int getMouseX() {
         return mouseX;
     }
