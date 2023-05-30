@@ -18,8 +18,6 @@ implements MouseListener {
     private int mouseX;
     private int mouseY;
 
-    public Graphics2D graphics2D;
-
     Boolean[][] cells = new Boolean[50][50];
 
     public void init(int w, int h) {
@@ -40,14 +38,7 @@ implements MouseListener {
         panelTop.setVisible(true);
         panelTop.addMouseListener(this);
         
-        graphics2D = (Graphics2D)panelTop.getGraphics();
-
-        //panelTop.add(start);
-        //start.setMaximumSize(new Dimension(25,25));
-        //start.setBackground(new Color(75,75,75));
-        //start.setRolloverEnabled(false);
-        //start.setLocation(100,100);
-        
+        Graphics2D graphics = (Graphics2D)panelTop.getGraphics();
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setMinimumSize(new Dimension(w, h));
@@ -61,10 +52,6 @@ implements MouseListener {
         height = h;
     }    
 
-
-    protected void paintComponent(Graphics g) {
-        
-    }
 
     public void paint(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
@@ -103,10 +90,10 @@ implements MouseListener {
      */
     public void paintSquare(int cX, int cY, Graphics2D g) {
         //PAINT HERE
-        Graphics2D g2d = g;
-        g2d.setColor(new Color(255,255,255));
+        
+        g.setColor(new Color(255,255,255));
         Rectangle2D.Double r = new Rectangle2D.Double(0, 0, 10, 10);
-        g2d.fill(r);
+        g.fill(r);
         
     }
 
