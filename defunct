@@ -1,4 +1,6 @@
-import java.awt.*;
+/**
+ * 
+ * import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.geom.*;
@@ -18,6 +20,9 @@ implements MouseListener {
     private int mouseX;
     private int mouseY;
 
+    public Graphics2D panelGraphics;
+
+
     Boolean[][] cells = new Boolean[50][50];
 
     public void init(int w, int h) {
@@ -26,19 +31,17 @@ implements MouseListener {
         
         
         JFrame f = new JFrame();
-        // flowlayout removes padding around edges
-        JPanel panelTop = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        //JPanel panelBot = new JPanel();
-        //start = new JButton("START");
-        f.add(panelTop);
-        //f.add(panelBot);
+        JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        f.add(panel);
 
-        panelTop.setMinimumSize(new Dimension(w,h));
-        panelTop.add(v);
-        panelTop.setVisible(true);
-        panelTop.addMouseListener(this);
         
-        Graphics2D graphics = (Graphics2D)panelTop.getGraphics();
+        panel.setMinimumSize(new Dimension(w,h));
+        panel.add(v);
+        panel.setVisible(true);
+        panel.addMouseListener(this);
+        
+        panelGraphics = (Graphics2D)panel.getGraphics();
+        paint(panelGraphics);
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setMinimumSize(new Dimension(w, h));
@@ -77,17 +80,17 @@ implements MouseListener {
         mouseY = arg0.getY();
         pendingClick = true;
         System.out.printf("%d %d\n", mouseX, mouseY);
-        paintSquare(getCellXOnClick(mouseX), getCellYOnClick(mouseY), graphics2D);
+        paintSquare(getCellXOnClick(mouseX), getCellYOnClick(mouseY), panelGraphics);
     }
 
 
 
 
-    /**
+    
      * 
      * @param cX cell x coord
      * @param cY cell y coord
-     */
+     
     public void paintSquare(int cX, int cY, Graphics2D g) {
         //PAINT HERE
         
@@ -110,7 +113,7 @@ implements MouseListener {
      * SHOULD ONLY BE CALLED WHEN MOUSE IS IN THE CELL BOX
      * @param mx == mouse x pos in window
      * @return index of cell x
-    **/
+    **
     public int getCellXOnClick(int mx) { 
         // 10px wide cells, 500px wide box = 50 cells wide
         return mx/10;
@@ -120,7 +123,7 @@ implements MouseListener {
      * SHOULD ONLY BE CALLED WHEN MOUSE IS IN THE CELL BOX
      * @param my == mouse y pos in window
      * @return index of cell y
-    **/
+    **
     public int getCellYOnClick(int my) { 
         // 10px tall cells, 500px tall box = 50 cells tall
         return my/10;        
@@ -148,7 +151,7 @@ implements MouseListener {
     /**
      * below are default getters/methods for mouselisteners
      * @return
-     */
+     *
     public int getMouseX() {
         return mouseX;
     }
@@ -179,3 +182,6 @@ implements MouseListener {
     }
 }
    
+ */
+
+
