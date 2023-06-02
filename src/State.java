@@ -5,15 +5,17 @@ public class State {
 
     public State() {
         cells = new boolean[50][50];
+        clearCells();
+        // debug: getNeighbors(5, 5);
+    }
+
+    public void clearCells() {
         for(int row = 0; row < cells.length; row++) {
             for(int col = 0; col < cells[0].length; col++){
                 cells[row][col] = false;
             }
         }
-        // debug: getNeighbors(5, 5);
-        
     }
-
     
     public int getNeighbors(int row, int col){
         int total = 0;

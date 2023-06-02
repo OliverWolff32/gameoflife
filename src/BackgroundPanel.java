@@ -83,8 +83,10 @@ public class BackgroundPanel extends JPanel implements MouseListener{
         }
         if(mx >= 350 && mx <= 500 && my >= 475 && my <= 550) { // in clear button
             System.out.println("Clear\n");
+            state.clearCells();
             Graphics g = this.getGraphics();
             drawBoard(State.cells, g);
+            g.dispose();
             
             // clear state and draw state
         }
