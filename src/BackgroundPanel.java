@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.*;
 
@@ -61,35 +62,45 @@ public class BackgroundPanel extends JPanel implements MouseListener{
             for(int j = 0; j < state[0].length; j++) {
                 g.setColor(state[i][j] ? white : backgroundGray);
                 g.fillRect(i * 10, j * 10, 10, 10);
-                
             }
         }
     }
 
-
+    public void gameLoop(){
+        while(running) {
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("hello");
+        }
+    }
 
     @Override
     public void mousePressed(MouseEvent arg0) {
         int mx = arg0.getX();
         int my = arg0.getY();
-        System.out.println("Click\n");
+        System.out.println("\nClick");
         if(mx >= 0 && mx <= 150 && my >= 475 && my <= 550) { // in start button
             running = true;
-            System.out.println("Start\n");
+            System.out.println("Start" + running + "\n");
+            gameLoop();
         }
         if(mx >= 175 && mx <= 325 && my >= 475 && my <= 550) { // in stop button
             running = false;
-            System.out.println("Stop\n");
+            System.out.println("Stop" + running + "\n");
         }
-        if(mx >= 350 && mx <= 500 && my >= 475 && my <= 550) { // in clear button
-            System.out.println("Clear\n");
-            state.clearCells(); // clear state
-            Graphics g = this.getGraphics();
-            drawBoard(State.cells, g); // draw state
-            g.dispose(); // only to be efficient - good practice
-        }
+        
         if(!running) {
-
+            if(mx >= 350 && mx <= 500 && my >= 475 && my <= 550) { // in clear button
+                System.out.println("Clear\n");
+                state.clearCells(); // clear state
+                Graphics g = this.getGraphics();
+                drawBoard(State.cells, g); // draw state
+                g.dispose(); // only to be efficient - good practice
+            }
+            
         }
     }
     @Override
