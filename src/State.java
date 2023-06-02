@@ -1,5 +1,5 @@
 public class State {
-    boolean[][] cells;
+    static boolean[][] cells;
 
     int[][] dirs = {{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1},{-1,0},{-1,1},};
 

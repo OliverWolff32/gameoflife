@@ -18,9 +18,8 @@ public class GameOfLife {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // need to use getContentPane to ignore the title bar in the frame when resizing.
-        f.getContentPane().setPreferredSize(new Dimension(500, 550));
-
-        f.setResizable(true);
+        f.getContentPane().setPreferredSize(new Dimension(500, 575));
+        f.setResizable(false);
         f.pack();
         f.setLocationRelativeTo(null);
         f.setVisible(true);
