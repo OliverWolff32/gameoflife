@@ -5,6 +5,10 @@ import javax.swing.*;
 
 public class GameOfLife {
     public static void main(String[] args){
+        init();
+    }
+
+    public static void init() {
         JFrame f = new JFrame();      
         JPanel panel = new BackgroundPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));    
         f.add(panel);
@@ -21,8 +25,6 @@ public class GameOfLife {
         f.setLocationRelativeTo(null);
         f.setVisible(true);
     }
-
-
 
     
     

@@ -13,6 +13,8 @@ public class BackgroundPanel extends JPanel implements MouseListener{
     Color stopRed = new Color(230,0,0);
     Color clearYellow = new Color(230,230,0);
 
+    State state = new State();
+
     public BackgroundPanel(FlowLayout flowLayout) {
         
     }
@@ -22,7 +24,7 @@ public class BackgroundPanel extends JPanel implements MouseListener{
     public void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D)g;
 
-        g2d.setColor(black);
+        g2d.setColor(backgroundGray);
         g2d.fillRect(0, 0, 500,550);
         // full window background
 

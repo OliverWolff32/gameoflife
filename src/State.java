@@ -1,7 +1,7 @@
 public class State {
     boolean[][] cells;
 
-    int[][] dirs = {{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1},{-1,0}};
+    int[][] dirs = {{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1},{-1,0},{-1,1},};
 
     public State() {
         cells = new boolean[50][50];
@@ -10,14 +10,25 @@ public class State {
                 cells[row][col] = false;
             }
         }
+        // debug: getNeighbors(5, 5);
+        
     }
 
+    
     public int getNeighbors(int row, int col){
         int total = 0;
+        boolean neighbor;
         for(int i = 0; i<dirs.length;i++){
-            
+            if(row + dirs[i][0]>=0 && row + dirs[i][0] < 50 
+            && col + dirs[i][1] >= 0 && col + dirs[i][1] < 50){
+            // if potential neighbor is within bounds
+                neighbor = getCell(row + dirs[i][0], col + dirs[i][1]);
+                if(neighbor) total++;
+            }
+            // debug: System.out.println("Detected row: " + String.valueOf(row + dirs[i][0]) + "  Detected col:  " + String.valueOf(col + dirs[i][1]));
         }
-        return -1;
+
+        return total;
     }
 
     public void flipCell(int row, int col) {
