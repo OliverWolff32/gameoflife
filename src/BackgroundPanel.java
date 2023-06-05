@@ -20,6 +20,7 @@ public class BackgroundPanel extends JPanel implements MouseListener{
 
     public BackgroundPanel(FlowLayout flowLayout) {
         this.addMouseListener(this);
+        
     }
 
 
@@ -54,7 +55,7 @@ public class BackgroundPanel extends JPanel implements MouseListener{
         g2d.drawString("CLEAR", 369,547);
         // clear button
 
-
+        drawBoard(State.cells, g2d);
     }
 
     public void drawBoard(boolean[][] state, Graphics g) {
@@ -76,6 +77,10 @@ public class BackgroundPanel extends JPanel implements MouseListener{
             System.out.println("hello");
         }
     }
+
+    
+
+
 
     @Override
     public void mousePressed(MouseEvent arg0) {
@@ -103,6 +108,11 @@ public class BackgroundPanel extends JPanel implements MouseListener{
             
         }
     }
+   
+   
+   
+   
+   
     @Override
     public void mouseEntered(MouseEvent arg0) {
         
