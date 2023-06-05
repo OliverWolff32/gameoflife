@@ -6,7 +6,7 @@ public class State {
     public State() {
         cells = new boolean[50][50];
         clearCells();
-        setCellStart(0.99);
+        setCellStart(0.15);
        // debug getAmtNeighbors(49,49);
     }
 
@@ -40,7 +40,7 @@ public class State {
 
     }
 
-    public void setGameArray(boolean[][] newArr) {
+    public void copyGameArray(boolean[][] newArr) {
         for(int row = 0; row < 50; row++) {
             for(int col = 0; col < 50; col++) {
                 cells[row][col] = newArr[row][col];

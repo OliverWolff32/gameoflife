@@ -51,7 +51,7 @@ public class BackgroundPanel extends JPanel implements MouseListener{
         g2d.setColor(clearYellow);
         g2d.fillRect(350, 500, 150, 75);
         g2d.setColor(black);
-        g2d.drawString("CLEAR", 369,547);
+        g2d.drawString("REDRAW", 350 ,547);
         // clear button
 
         drawBoard(State.cells, g2d);
@@ -69,11 +69,11 @@ public class BackgroundPanel extends JPanel implements MouseListener{
     public void gameLoop(){
         while(running) {
             try {
-                Thread.sleep(200);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            state.setGameArray(getNextIteration(State.cells));
+            state.copyGameArray(getNextIteration(State.cells));
             Graphics g = this.getGraphics();
             drawBoard(State.cells, g); 
             g.dispose(); 
@@ -105,7 +105,7 @@ public class BackgroundPanel extends JPanel implements MouseListener{
             gameLoop();
         }
         if(mx >= 175 && mx <= 325 && my >= 475 && my <= 550) { // in step button
-            state.setGameArray(getNextIteration(State.cells));
+            state.copyGameArray(getNextIteration(State.cells));
             Graphics g = this.getGraphics();
             drawBoard(State.cells, g); 
             g.dispose(); 
@@ -113,9 +113,9 @@ public class BackgroundPanel extends JPanel implements MouseListener{
         }
         
         if(!running) {
-            if(mx >= 350 && mx <= 500 && my >= 475 && my <= 550) { // in clear button
+            if(mx >= 350 && mx <= 500 && my >= 475 && my <= 550) { // in reset button
                 System.out.println("Clear\n");
-                state.clearCells(); // clear state
+                state.setCellStart(0.2);
                 Graphics g = this.getGraphics();
                 drawBoard(State.cells, g); // draw state
                 g.dispose(); // only to be efficient - good practice
