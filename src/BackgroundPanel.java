@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.*;
 
@@ -13,8 +12,8 @@ public class BackgroundPanel extends JPanel implements MouseListener{
     Color white = Color.WHITE;
     Color black = Color.BLACK;
     Color startGreen = new Color(70, 225, 41);
-    Color stopRed = new Color(230,0,0);
-    Color clearYellow = new Color(230,230,0);
+    Color stepOrange = new Color(230,100,0);
+    Color clearYellow = new Color(230,40,40);
 
     State state = new State();
 
@@ -43,10 +42,10 @@ public class BackgroundPanel extends JPanel implements MouseListener{
         g2d.drawString("START", 23,547);
         // start button
 
-        g2d.setColor(stopRed);
+        g2d.setColor(stepOrange);
         g2d.fillRect(175, 500, 150,75);
         g2d.setColor(black);
-        g2d.drawString("STOP", 206, 547);
+        g2d.drawString("STEP", 206, 547);
         // stop button
 
         g2d.setColor(clearYellow);
@@ -70,16 +69,29 @@ public class BackgroundPanel extends JPanel implements MouseListener{
     public void gameLoop(){
         while(running) {
             try {
-                Thread.sleep(400);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("hello");
+            state.setGameArray(getNextIteration(State.cells));
+            Graphics g = this.getGraphics();
+            drawBoard(State.cells, g); 
+            g.dispose(); 
+
         }
     }
 
     
-
+    public boolean[][] getNextIteration(boolean[][] initialArr) {
+        boolean[][] nextArr = new boolean[50][50];
+        for(int row = 0; row < 50; row++) {
+            for (int col = 0; col < 50; col++) {
+                nextArr[row][col] = state.shouldBeOn(initialArr, row, col);
+            }
+        }
+        
+        return nextArr;
+    }
 
 
     @Override
@@ -92,9 +104,12 @@ public class BackgroundPanel extends JPanel implements MouseListener{
             System.out.println("Start" + running + "\n");
             gameLoop();
         }
-        if(mx >= 175 && mx <= 325 && my >= 475 && my <= 550) { // in stop button
-            running = false;
-            System.out.println("Stop" + running + "\n");
+        if(mx >= 175 && mx <= 325 && my >= 475 && my <= 550) { // in step button
+            state.setGameArray(getNextIteration(State.cells));
+            Graphics g = this.getGraphics();
+            drawBoard(State.cells, g); 
+            g.dispose(); 
+            System.out.println("Step"+"\n");
         }
         
         if(!running) {

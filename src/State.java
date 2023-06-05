@@ -6,7 +6,7 @@ public class State {
     public State() {
         cells = new boolean[50][50];
         clearCells();
-        setCellStart(0.2);
+        setCellStart(0.99);
        // debug getAmtNeighbors(49,49);
     }
 
@@ -38,6 +38,14 @@ public class State {
         // cells[1][1] = true;
         // cells[18][47] = true;
 
+    }
+
+    public void setGameArray(boolean[][] newArr) {
+        for(int row = 0; row < 50; row++) {
+            for(int col = 0; col < 50; col++) {
+                cells[row][col] = newArr[row][col];
+            }
+        }
     }
 
     public boolean shouldBeOn(boolean[][] arr, int row, int col) {
